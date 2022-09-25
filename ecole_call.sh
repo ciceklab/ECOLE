@@ -1,0 +1,1 @@
+python ./scripts/ECOLE_call.py --model ecole-ft-somatic --input ./processed_samples --output ./ecole_calls_output --cnv merged --target hglft_genome_64dc_dcbaa0.bed --normalize ecole_stats.txt --gpu 0
