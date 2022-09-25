@@ -284,7 +284,6 @@ dependencies:
   - qtawesome=0.7.2=py_0
   - qtconsole=4.7.5=py_0
   - qtpy=1.9.0=py_0
-  - r-base=3.2.2=0
   - readline=8.0=h7b6447c_0
   - regex=2020.6.8=py38h7b6447c_0
   - requests=2.24.0=py_0

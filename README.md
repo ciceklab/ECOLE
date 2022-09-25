@@ -45,9 +45,10 @@ Berk Mandiracioglu, Furkan Ozden, Can Alkan, A. Ercument Cicek
 ### Requirements
 
 For easy requirement handling, you can use ECOLE_environment.yml files to initialize conda environment with requirements installed:
+
 ```shell
-$ conda env create -f ECOLE_environment.yml
-$ conda activate ECOLE_linux
+$ conda env create --name ecole_env -f ECOLE_environment.yml
+$ conda activate ecole_env
 ```
 
 ---
@@ -105,11 +106,11 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 ### Step-1: Set Up your environment.
 
 - It is important to set up the conda environment which includes the necessary dependencies.
-- Please run one of the following lines:
+- Please run the following lines to create and activate the environment:
 
 ```shell
-$ conda env create -f ECOLE_environment.yml
-$ conda activate ECOLE_linux
+$ conda env create --name ecole_env -f ECOLE_environment.yml
+$ conda activate ecole_env
 ```
 
 ### Step-2: Run the preprocessing script.
