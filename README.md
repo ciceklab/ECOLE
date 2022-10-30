@@ -65,8 +65,7 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 
 #### -m, --model
 - Pretrained models of the paper, one of the following: (1) ecole, (2) ecole-ft-expert, (3) ecole-ft-somatic. 
-- Input data path obtained comprised of WES samples with read depth data.
-- If you want to use custom model weights for ECOLÉ obtained using ECOLÉ_train.py script.
+
 
 #### -bs, --batch_size
 - Batch size to be used to perform CNV call on the samples. 
