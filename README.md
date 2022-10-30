@@ -68,6 +68,9 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 - Input data path obtained comprised of WES samples with read depth data.
 - If you want to use custom model weights for ECOLÉ obtained using ECOLÉ_train.py script.
 
+#### -bs, --batch_size
+- Batch size to be used to perform CNV call on the samples. 
+
 #### -i, --input
 - Relative or direct path for are the processed WES samples, including read depth data. 
 
@@ -77,8 +80,6 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 ### -c, --cnv
 - Level of resolution you desire, choose one of the options: (1) exonlevel, (2) merged.
 
-### -t, --target
-- Relative or direct path of exon target file.
 
 ### -n, --normalize
 - Relative or direct path for mean&std stats of read depth values to normalize. These values are obtained precalculated from the training dataset before the pretraining.

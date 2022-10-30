@@ -86,6 +86,7 @@ opt_args = parser.add_argument_group("Optional Arguments")
 required_args.add_argument("-m", "--model", help="If you want to use pretrained ECOLÉ weights choose one of the options: \n \
                    (i) ecole \n (ii) ecole-ft-expert \n (iii) ecole-ft-somatic.", required=True)
 
+required_args.add_argument("-bs", "--batch_size", help="Batch size to be used in the finetuning.", required=True)
 
 required_args.add_argument("-i", "--input", help="Relative or direct path to input files for ECOLÉ CNV caller, these are the processed samples.", required=True)
 
@@ -93,8 +94,6 @@ required_args.add_argument("-o", "--output", help="Relative or direct output dir
 
 required_args.add_argument("-c", "--cnv", help="Depending on the level of resolution you desire, choose one of the options: \n \
                                                 (i) exonlevel, (ii) merged", required=True)
-
-required_args.add_argument("-t", "--target", help="Please provide the path of exon target file.", required=True)
 
 required_args.add_argument("-n", "--normalize", help="Please provide the path for mean&std stats of read depth values to normalize. \n \
                                                     These values are obtained precalculated from the training dataset before the pretraining.", required=True)
