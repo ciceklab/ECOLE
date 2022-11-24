@@ -1,3 +1,5 @@
+# implementation from https://github.com/lucidrains/performer-pytorch
+
 import torch
 import torch.nn as nn
 from operator import itemgetter

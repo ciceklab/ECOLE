@@ -243,11 +243,11 @@ class CNVcaller(nn.Module):
 model = CNVcaller(1000, 1, 3, 192, 3)
 
 if args.model == "ecole":
-    model.load_state_dict(torch.load(os.path.join(cur_dirname, "../models/ecole_model.pt")))
+    model.load_state_dict(torch.load(os.path.join(cur_dirname, "../models/ecole_model.pt"), map_location=device))
 elif args.model == "ecole-ft-expert":
-    model.load_state_dict(torch.load(os.path.join(cur_dirname,"../models/ecole_ft_expert_model.pt")))
+    model.load_state_dict(torch.load(os.path.join(cur_dirname,"../models/ecole_ft_expert_model.pt"), map_location=device))
 elif args.model == "ecole-ft-somatic":
-    model.load_state_dict(torch.load(os.path.join(cur_dirname,"../models/ecole_ft_somatic_model.pt")))
+    model.load_state_dict(torch.load(os.path.join(cur_dirname,"../models/ecole_ft_somatic_model.pt"), map_location=device))
 
 model.eval()
 model = model.to(device)
@@ -398,8 +398,8 @@ for sample_name in tqdm(all_samples_names):
         f.close()
 
 
-    calls_ecole = pd.read_csv("../tmp/"+ sample_name + ".csv", sep=",", header=None).values
-    target_data = pd.read_csv("../hglft_genome_64dc_dcbaa0.bed", sep="\t", header=None).values
+    calls_ecole = pd.read_csv(os.path.join(cur_dirname,"../tmp/")+ sample_name + ".csv", sep=",", header=None).values
+    target_data = pd.read_csv(os.path.join(cur_dirname,"../hglft_genome_64dc_dcbaa0.bed"), sep="\t", header=None).values
 
     convert_chr_to_integer(target_data[:,0])
     convert_chr_to_integer(calls_ecole[:,0])
