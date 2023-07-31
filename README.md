@@ -1,11 +1,11 @@
 
-# ECOLÉ: Learning to call copy number variants on whole exome sequencing data
+# ECOLE: Learning to call copy number variants on whole exome sequencing data
 
 
 
-> ECOLÉ is a deep learning based software that performs CNV call predictions on WES data using read depth sequences.
+> ECOLE is a deep learning based software that performs CNV call predictions on WES data using read depth sequences.
 
-> The manuscript can be found here:  <a href="https://www.biorxiv.org/content/10.1101/2022.11.17.516880v1" target="_blank">**ECOLÉ: Learning to call copy number variants on whole exome sequencing data**</a>
+> The manuscript can be found here:  <a href="https://www.biorxiv.org/content/10.1101/2022.11.17.516880v1" target="_blank">**ECOLE: Learning to call copy number variants on whole exome sequencing data**</a>
 
 > The repository with the necessary data and scripts to reproduce the results in the paper can be found here: <a href="https://zenodo.org/record/7317266#.Y3F0jS8w1hE" target="_blank">**ECOLE results reproduction**</a>
 
@@ -30,7 +30,7 @@ Berk Mandiracioglu, Furkan Ozden, Can Alkan, A. Ercument Cicek
 
 ## Table of Contents 
 
-> Warning: Please note that ECOLÉ software is completely free for academic usage. However it is licenced for commercial usage. Please first refer to the [License](#license) section for more info.
+> Warning: Please note that ECOLE software is completely free for academic usage. However it is licenced for commercial usage. Please first refer to the [License](#license) section for more info.
 
 - [Installation](#installation)
 - [Features](#features)
@@ -44,7 +44,7 @@ Berk Mandiracioglu, Furkan Ozden, Can Alkan, A. Ercument Cicek
 
 ## Installation
 
-- ECOLÉ is a python3 script and it is easy to run after the required packages are installed.
+- ECOLE is a python3 script and it is easy to run after the required packages are installed.
 
 ### Requirements
 
@@ -60,11 +60,11 @@ Note that the provided environment yml file is for Linux systems. For MacOS user
 
 ## Features
 
-- ECOLÉ provides GPU support optionally. See [GPU Support](#gpu-support) section.
+- ECOLE provides GPU support optionally. See [GPU Support](#gpu-support) section.
 
 
 ## Instructions Manual
-Important notice: Please call the ECOLÉ_call.py script from the scripts directory.
+Important notice: Please call the ECOLE_call.py script from the scripts directory.
 
 ### Required Arguments
 
@@ -79,7 +79,7 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 - Relative or direct path for are the processed WES samples, including read depth data. 
 
 #### -o, --output
-- Relative or direct output directory path to write ECOLÉ output file.
+- Relative or direct output directory path to write ECOLE output file.
 
 ### -c, --cnv
 - Level of resolution you desire, choose one of the options: (1) exonlevel, (2) merged.
@@ -96,7 +96,7 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 - You can check, PCI BUS IDs of the gpus in your system with various ways. Using gpustat tool check IDs of the gpus in your system like below:
 
 #### -v, --version
--Check the version of ECOLÉ.
+-Check the version of ECOLE.
 
 #### -h, --help
 -See help page.
@@ -105,7 +105,7 @@ Important notice: Please call the ECOLÉ_call.py script from the scripts directo
 
 ## Usage Examples
 
-> Usage of ECOLÉ is very simple!
+> Usage of ECOLE is very simple!
 
 ### Step-0: Install conda package management
 
@@ -140,9 +140,9 @@ $ conda activate ecole_env
 $ source preprocess_samples.sh
 ```
 
-### Step-3: Run ECOLÉ on data obtained in Step-2
+### Step-3: Run ECOLE on data obtained in Step-2
 
-- Here, we demonstrate an example to run ECOLÉ on gpu device 0, and obtain exon-level CNV call.
+- Here, we demonstrate an example to run ECOLE on gpu device 0, and obtain exon-level CNV call.
 - Please run the following script:
 
 ```shell
@@ -150,11 +150,11 @@ $ source ecole_call.sh
 ```
  You can change the argument parameters within the script to run it on cpu and/or to obtain merged CNV calls.
 
-### Output file of ECOLÉ
-- At the end of the CNV calling procedure, ECOLÉ will write its output file to the directory given with -o option. In this tutorial it is ./ecole_calls_output
-- Output file of ECOLÉ is a tab-delimited .bed like format. 
-- Columns in the output file of ECOLÉ are the following with order: 1. Sample Name, 2. Chromosome, 3. CNV Start Index, 4. CNV End Index, 5. ECOLÉ Prediction 
-- Following figure is an example of ECOLÉ output file.
+### Output file of ECOLE
+- At the end of the CNV calling procedure, ECOLE will write its output file to the directory given with -o option. In this tutorial it is ./ecole_calls_output
+- Output file of ECOLE is a tab-delimited .bed like format. 
+- Columns in the output file of ECOLE are the following with order: 1. Sample Name, 2. Chromosome, 3. CNV Start Index, 4. CNV End Index, 5. ECOLE Prediction 
+- Following figure is an example of ECOLE output file.
 
 
 <img src="./example_output.png"   class="center">
@@ -171,5 +171,5 @@ $ source ecole_call.sh
 
 
 - **[CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/)**
-- Copyright 2022 © ECOLÉ.
+- Copyright 2022 © ECOLE.
 - For commercial usage, please contact.
