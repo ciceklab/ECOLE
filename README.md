@@ -161,6 +161,9 @@ $ source ecole_call.sh
 
 ## ECOLE Finetuning Example
 
+> We provide an ECOLE Finetuning example with WES sample of NA12891 using only chromosome 21.
+> Step-0 and Step-1 are the same as the ECOLE call example.
+
 ### Step-0: Install conda package management
 
 - This project uses conda package management software to create virtual environment and facilitate reproducability.
@@ -187,7 +190,8 @@ $ conda activate ecole_env
 
 ### Step-2: Run the preprocessing script for preparing the samples for finetuning.
 
-- It is necessary to perform preprocessing on WES data samples to obtain read depth and other meta data and make them ready for CNV calling.
+- It is necessary to perform preprocessing on WES data samples to obtain read depth and other meta data and make them ready for ECOLE finetuning.
+- ECOLE Finetuning requires .bam and ground truth calls as provided under /finetune_example_data
 - Please run the following line:
 
 ```shell
