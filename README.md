@@ -63,7 +63,7 @@ Note that the provided environment yml file is for Linux systems. For MacOS user
 - ECOLE provides GPU support optionally. See [GPU Support](#gpu-support) section.
 
 
-## Instructions Manual
+## Instructions Manual for ECOLE
 Important notice: Please call the ECOLE_call.py script from the scripts directory.
 
 ### Required Arguments
@@ -103,7 +103,7 @@ Important notice: Please call the ECOLE_call.py script from the scripts director
 
 
 
-## Usage Examples
+## Usage Example
 
 > Usage of ECOLE is very simple!
 
@@ -159,7 +159,46 @@ $ source ecole_call.sh
 
 <img src="./example_output.png"   class="center">
 
-## ECOLE Finetuning Example
+## Instructions Manual for Finetuning ECOLE
+Important notice: Please call the ECOLE_finetune.py script from the scripts directory.
+
+### Required Arguments
+
+#### -bs, --batch_size
+- Batch size to be used to perform CNV call on the samples. 
+
+#### -i, --input
+- Relative or direct path for are the processed WES samples, including read depth data. 
+
+#### -o, --output
+- Relative or direct output directory path to write ECOLE output file.
+
+### -n, --normalize
+- Relative or direct path for mean&std stats of read depth values to normalize. These values are obtained precalculated from the training dataset before the pretraining.
+
+### -e, --epochs
+- The number of epochs the finetuning will be performed.
+
+### -lr, --learning_rate
+- The learning rate to be used in finetuning
+
+### -lmp, --load_model_path
+- The path for the pretrained model weights to be loaded for finetuning
+
+### Optional Arguments
+
+#### -g, --gpu
+- Set to PCI BUS ID of the gpu in your system.
+- You can check, PCI BUS IDs of the gpus in your system with various ways. Using gpustat tool check IDs of the gpus in your system like below:
+
+#### -v, --version
+-Check the version of ECOLE.
+
+#### -h, --help
+-See help page.
+
+
+## Finetune Example
 
 > We provide an ECOLE Finetuning example with WES sample of NA12891 using only chromosome 21.
 > Step-0 and Step-1 are the same as the ECOLE call example.
