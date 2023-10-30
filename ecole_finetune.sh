@@ -1,0 +1,1 @@
+python ./scripts/ECOLE_finetune.py --batch_size 32 --input ./processed_finetuning_dataset --output ./ecole_finetuned_model_weights --normalize ecole_stats.txt --epochs 5 --learning_rate 5e-5 --load_model_path /models/ecole_model.pt --gpu 0
