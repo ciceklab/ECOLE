@@ -230,7 +230,8 @@ $ conda activate ecole_env
 ### Step-2: Run the preprocessing script for preparing the samples for finetuning.
 
 - It is necessary to perform preprocessing on WES data samples to obtain read depth and other meta data and make them ready for ECOLE finetuning.
-- ECOLE Finetuning requires .bam and ground truth calls as provided under /finetune_example_data
+- ECOLE Finetuning requires .bam and ground truth calls as provided under /finetune_example_data. Please see the below image for a sample ground truths format.
+- <img src="./finetune_ground_truths.png"   class="center">
 - Please run the following line:
 
 ```shell
