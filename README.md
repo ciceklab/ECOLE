@@ -16,7 +16,7 @@
 
 ## Authors
 
-Berk Mandiracioglu, Furkan Ozden, Can Alkan, A. Ercument Cicek
+Berk Mandiracioglu, Furkan Ozden, Gun Kaynar, M. Alper Yilmaz, Can Alkan, A. Ercument Cicek
 
 ---
 
