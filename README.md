@@ -159,6 +159,55 @@ $ source ecole_call.sh
 
 <img src="./example_output.png"   class="center">
 
+## ECOLE Finetuning Example
+
+### Step-0: Install conda package management
+
+- This project uses conda package management software to create virtual environment and facilitate reproducability.
+
+- For Linux users:
+ - Please take a look at the <a href="https://repo.anaconda.com/archive/" target="_blank">**Anaconda repo archive page**</a>, and select an appropriate version that you'd like to install.
+ - Replace this `Anaconda3-version.num-Linux-x86_64.sh` with your choice
+
+```shell
+$ wget -c https://repo.continuum.io/archive/Anaconda3-vers.num-Linux-x86_64.sh
+$ bash Anaconda3-version.num-Linux-x86_64.sh
+```
+
+
+### Step-1: Set Up your environment.
+
+- It is important to set up the conda environment which includes the necessary dependencies.
+- Please run the following lines to create and activate the environment:
+
+```shell
+$ conda env create --name ecole_env -f ECOLE_environment.yml
+$ conda activate ecole_env
+```
+
+### Step-2: Run the preprocessing script for preparing the samples for finetuning.
+
+- It is necessary to perform preprocessing on WES data samples to obtain read depth and other meta data and make them ready for CNV calling.
+- Please run the following line:
+
+```shell
+$ source finetune_preprocess_samples.sh
+```
+
+### Step-3: Start ECOLE Finetuning on data obtained in Step-2
+
+- Here, we demonstrate an example to run ECOLE Finetuning on gpu device 0.
+- Please run the following script:
+
+```shell
+$ source ecole_finetune.sh
+```
+ You can change the argument parameters within the script to run it on cpu.
+
+### Output file of ECOLE
+- At the end of ECOLE Finetuning, the script will save its model weights file to the directory given with -o option. In this tutorial it is ./ecole_finetuned_model_weights
+
+
 ---
 
 
