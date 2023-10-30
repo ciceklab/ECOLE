@@ -253,6 +253,7 @@ $ source ecole_finetune.sh
 ### Output file of ECOLE
 - At the end of ECOLE Finetuning, the script will save its model weights file to the directory given with -o option. In this tutorial it is ./ecole_finetuned_model_weights
 
+<img src="./finetune_output.png"   class="center">
 
 ---
 
