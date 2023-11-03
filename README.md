@@ -3,6 +3,10 @@
 
 
 
+[![DOI](https://zenodo.org/badge/541773560.svg)](https://zenodo.org/doi/10.5281/zenodo.10069036)
+
+
+
 > ECOLE is a deep learning based software that performs CNV call predictions on WES data using read depth sequences.
 
 > The manuscript can be found here:  <a href="https://www.biorxiv.org/content/10.1101/2022.11.17.516880v1" target="_blank">**ECOLE: Learning to call copy number variants on whole exome sequencing data**</a>
