@@ -26,7 +26,8 @@ Berk Mandiracioglu, Furkan Ozden, Gun Kaynar, M. Alper Yilmaz, Can Alkan, A. Erc
 
 ## Questions & comments 
 
-[firstauthorname].[firstauthorsurname]@epfl.ch
+[firstauthorname].[firstauthorsurname]@gmail.com
+[lastauthorsurname]@cs.bilkent.edu.tr
 
 ---
 
