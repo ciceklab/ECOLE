@@ -100,6 +100,10 @@ Important notice: Please call the ECOLE_call.py script from the scripts director
 - Set to PCI BUS ID of the gpu in your system.
 - You can check, PCI BUS IDs of the gpus in your system with various ways. Using gpustat tool check IDs of the gpus in your system like below:
 
+#### -conf, --confidenceThreshold
+-Confidence threshold for calling CNV labels.
+-Select higher values for more confident calls.
+
 #### -v, --version
 -Check the version of ECOLE.
 
