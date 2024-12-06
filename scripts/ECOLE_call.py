@@ -21,6 +21,7 @@ from itertools import groupby
 from tqdm import tqdm
 import argparse
 import datetime
+import pdb
 
 
 
@@ -94,6 +95,11 @@ required_args.add_argument("-o", "--output", help="Relative or direct output dir
 
 required_args.add_argument("-c", "--cnv", help="Depending on the level of resolution you desire, choose one of the options: \n \
                                                 (i) exonlevel, (ii) merged", required=True)
+
+
+opt_args.add_argument("-conf", "--confidenceThreshold", default=-1, help="Confidence threshold for calling CNV labels. \n \
+                                                                Select higher values for more confident calls.", required=False)
+
 
 required_args.add_argument("-n", "--normalize", help="Please provide the path for mean&std stats of read depth values to normalize. \n \
                                                     These values are obtained precalculated from the training dataset before the pretraining.", required=True)
@@ -331,6 +337,8 @@ for sample_name in tqdm(all_samples_names):
     x_test = DataLoader(test_x, batch_size=50)
 
     allpreds = []
+    allConfidences = []
+
 
     for exons in tqdm(x_test):
     
@@ -348,28 +356,34 @@ for sample_name in tqdm(all_samples_names):
         output1 = model(exons,real_mask)
         
         _, predicted = torch.max(output1.data, 1)
-
+        confidences = nn.functional.softmax(output1)[:,[1,2]]
         
         preds = list(predicted.cpu().numpy().astype(np.int64))
         allpreds.extend(preds)
         
+        confidence_list = confidences.cpu().detach().numpy().astype(np.float).tolist()
+        allConfidences.extend(confidence_list) 
+        
  
- 
-
     chrs_data = chrs_data.astype(int)
     allpreds = np.array(allpreds)
+    allConfidences = np.array(allConfidences)
+
     for j in tqdm(range(1,25)):
         indices = chrs_data == j
 
         predictions = allpreds[indices]
         start_inds = start_inds_data[indices]
         end_inds = end_inds_data[indices]
+        confidences = allConfidences[indices]
 
         sorted_ind = np.argsort(start_inds)
         predictions = predictions[sorted_ind]
      
         end_inds = end_inds[sorted_ind]
         start_inds = start_inds[sorted_ind]
+        confidences = confidences[sorted_ind]
+        
         chr_ = "chr"
         if j < 23:
             chr_ += str(j)
@@ -381,11 +395,12 @@ for sample_name in tqdm(all_samples_names):
            
             os.makedirs(os.path.dirname(os.path.join(cur_dirname,"../tmp/")  + sample_name + ".csv"), exist_ok=True)
             f = open(os.path.join(cur_dirname,"../tmp/") + sample_name + ".csv", "a")
-            f.write(chr_ + "," + str(start_inds[k_]) + "," + str(end_inds[k_]) + ","+ str(predictions[k_]) + "\n")
+            f.write(chr_ + "," + str(start_inds[k_]) + "," + str(end_inds[k_]) + ","+ str(predictions[k_])+","+str(confidences[k_][0])+","+str(confidences[k_][1]) + "\n")
             f.close()
 
 
 message("Calling for regions without read depth information..")
+
 
 for sample_name in tqdm(all_samples_names):
  
@@ -408,7 +423,19 @@ for sample_name in tqdm(all_samples_names):
     allpreds = calls_ecole[:,3].astype(int)
     start_inds_data = calls_ecole[:,1].astype(int)
     end_inds_data = calls_ecole[:,2].astype(int)
+    dup_confidences = calls_ecole[:,4].astype(float)
+    del_confideces = calls_ecole[:,5].astype(float)
 
+    ## FILTERING WITH RESPECT TO CONFIDENCE VALUE
+    if(float(args.confidenceThreshold)>=0):
+        confidence_mask = (dup_confidences > float(args.confidenceThreshold)) | (del_confideces > float(args.confidenceThreshold)) 
+        if(confidence_mask.any()):
+            dup_regions = (confidence_mask & (dup_confidences>=del_confideces))
+            del_regions = (confidence_mask & (dup_confidences<del_confideces))
+            allpreds[dup_regions] = 1
+            allpreds[del_regions] = 2
+            allpreds[(~dup_regions) & (~del_regions)] = 0
+            
     chrs_data_target = target_data[:,0].astype(int)
     start_inds_data_target = target_data[:,1].astype(int)
     end_inds_data_target = target_data[:,2].astype(int)
@@ -583,7 +610,6 @@ if args.cnv == "merged":
                 f.close()
 
 
-
 filelisttmp1 = os.listdir(os.path.join(cur_dirname,"../tmp/"))
 filelisttmp2 = os.listdir(os.path.join(cur_dirname,"../tmp2/"))
 
@@ -594,3 +620,5 @@ for f in filelisttmp2:
 
 os.rmdir(os.path.join(cur_dirname,"../tmp/")) 
 os.rmdir(os.path.join(cur_dirname,"../tmp2/")) 
+
+
